@@ -329,6 +329,13 @@ def select_model(args, device):
         model_path = os.path.join('model_zoo', 'team44_msdn.pth')
         model = MSDN(in_nc=3, nf=56, dist_rate=0.5, num_modules=3, out_nc=3, upscale=4, act_type='silu')
         model.load_state_dict(torch.load(model_path), strict=True)
+    elif model_id == 45:
+        # VMCL_Taobao Team
+        from models.pakuz import RFDN as dd
+        name, data_range = f"{model_id:02}_RFDN_residual", 255.0
+        model_path = os.path.join('model_zoo', 'residual_rfdn_pakuz.pt')
+        model = dd.RFDN()
+        model.load_state_dict(torch.load(model_path), strict=True)
     else:
         raise NotImplementedError(f"Model {model_id} is not implemented.")
 
@@ -353,7 +360,7 @@ def select_dataset(data_dir, mode):
     else:
         path = [
             (
-                os.path.join(data_dir, f"DIV2K_valid_LR/{i:04}x4.png"),
+                os.path.join(data_dir, f"DIV2K_valid_LR_bicubic/X4/{i:04}x4.png"),
                 os.path.join(data_dir, f"DIV2K_valid_HR/{i:04}.png")
             ) for i in range(801, 901)
         ]
@@ -565,9 +572,9 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser("NTIRE2022-EfficientSR")
-    parser.add_argument("--data_dir", default="/cluster/work/cvl/yawli/data/NTIRE2022_Challenge", type=str)
-    parser.add_argument("--save_dir", default="/cluster/work/cvl/yawli/data/NTIRE2022_Challenge/results", type=str)
-    parser.add_argument("--model_id", default=0, type=int)
+    parser.add_argument("--data_dir", default="dataset/DIV2K", type=str)
+    parser.add_argument("--save_dir", default="./results", type=str)
+    parser.add_argument("--model_id", default=45, type=int)
     parser.add_argument("--include_test", action="store_true", help="Inference on the DIV2K test set")
     parser.add_argument("--ssim", action="store_true", help="Calculate SSIM")
 
