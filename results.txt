@@ -1,3 +1,4 @@
 Model               	Val PSNR  	Val Time [ms] 	Params [M]	FLOPs [G] 	Acts [M]	Mem [M] 	Conv    
-00_RFDN_baseline    	29.04     	88.54         	0.433     	27.10     	112.03  	788.13  	  64    
-45_RFDN_residual    	28.65     	90.31         	0.427     	27.47     	150.43  	798.04  	  64    
+00_RFDN_baseline    	29.04     	93.90         	0.433     	27.10     	112.03  	788.13  	  64    
+45_RFDN_residual    	28.65     	95.33         	0.427     	27.47     	150.43  	798.04  	  64    
+46_RFDN_residual    	28.73     	91.41         	0.514     	32.35     	164.46  	788.45  	  80    

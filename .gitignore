@@ -3,3 +3,4 @@ dataset/
 *.pyc
 *.pyo
 __pycache__/
+runs/
