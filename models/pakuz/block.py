@@ -8,7 +8,7 @@ def conv_layer(in_channels, out_channels, kernel_size, stride=1, dilation=1, gro
     return nn.Conv2d(in_channels, out_channels, kernel_size, stride, padding=padding, bias=True, dilation=dilation,
                      groups=groups)
 
-# my part#######################################################################################
+# Extra Residual Block
 class Residual(nn.Module):
     def __init__(self, in_chan, stride=1):
         super(Residual, self).__init__()
@@ -123,7 +123,7 @@ def sequential(*args):
             modules.append(module)
     return nn.Sequential(*modules)
 
-############################################3same as tam35##########################
+
 class ESA(nn.Module):
     def __init__(self, n_feats, conv):
         super(ESA, self).__init__()
