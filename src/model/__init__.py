@@ -9,7 +9,7 @@ import torch.utils.model_zoo
 class Model(nn.Module):
     def __init__(self, args, ckp):
         super(Model, self).__init__()
-        print('Making model RFDN...')
+        print('Making model RLFN...')
 
         self.scale = args.scale
         self.idx_scale = 0
@@ -34,12 +34,12 @@ class Model(nn.Module):
         if args.precision == 'half':
             self.model.half()
 
-        self.load(
-            ckp.get_path('model'),
-            pre_train=args.pre_train,
-            resume=args.resume,
-            cpu=args.cpu
-        )
+        # self.load(
+        #     ckp.get_path('model'),
+        #     pre_train=args.pre_train,
+        #     resume=args.resume,
+        #     cpu=args.cpu
+        # )
         print(self.model, file=ckp.log_file)
 
     def forward(self, x, idx_scale):
