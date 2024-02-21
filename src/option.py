@@ -27,7 +27,7 @@ parser.add_argument('--data_train', type=str, default='DIV2K',
                     help='train dataset name')
 parser.add_argument('--data_test', type=str, default='DIV2K',
                     help='test dataset name')
-parser.add_argument('--data_range', type=str, default='1-790/791-800',
+parser.add_argument('--data_range', type=str, default='1-700/701-800',
                     help='train/test data range')
 parser.add_argument('--ext', type=str, default='sep',
                     help='dataset file extension')
@@ -45,15 +45,18 @@ parser.add_argument('--no_augment', action='store_true',
                     help='do not use data augmentation')
 
 # Model specifications
-parser.add_argument('--model', default='DDRFN',
+parser.add_argument('--model', default='CRLFN',
                     help='model name')
 
 parser.add_argument('--act', type=str, default='relu',
                     help='activation function')
-parser.add_argument('--pre_train', type=str, default='',
-                    help='pre-trained model directory')
-parser.add_argument('--extend', type=str, default='.',
-                    help='pre-trained model directory')
+
+
+# parser.add_argument('--pre_train', type=str, default='',
+#                     help='pre-trained model directory')
+# parser.add_argument('--extend', type=str, default='.',
+#                     help='pre-trained model directory')
+
 parser.add_argument('--n_resblocks', type=int, default=16,
                     help='number of residual blocks')
 parser.add_argument('--n_feats', type=int, default=64,
